@@ -15,10 +15,10 @@ Fix N slopes a_i = i/N and δ = 1/N. Each slope gets a thin triangle with a vert
 | N | Keich 1999 | AlphaEvolve 2025 | GPT-5.4 Pro 2026 | Dualverse 2026 (previous best) | **This work** |
 |---|---|---|---|---|---|
 | 32 | 0.154590 | 0.141647 | – | 0.138596 | **0.138432** |
-| 64 | 0.134694 | 0.121735 | – | 0.120901 | **0.120887** |
-| 128 | 0.119207 | 0.114810 | 0.109148 | 0.107067 | **0.106962440** |
+| 64 | 0.134694 | 0.121735 | – | 0.120901 | **0.120839** |
+| 128 | 0.119207 | 0.114810 | 0.109148 | 0.107067 | **0.106909327** |
 
-At N = 128 the new construction is 0.10% below the previous best, 2.00% below GPT-5.4 Pro, 6.84% below AlphaEvolve and 10.27% below Keich. The intercepts are in [`results/`](results/). Each file stores the float64 intercepts and the **exact** area of exactly that configuration.
+At N = 128 the new construction is 0.15% below the previous best, 2.05% below GPT-5.4 Pro, 6.88% below AlphaEvolve and 10.32% below Keich. The intercepts are in [`results/`](results/). Each file stores the float64 intercepts and the **exact** area of exactly that configuration.
 
 ## Verify it yourself (about 1 minute)
 
@@ -66,7 +66,7 @@ To explore it interactively, run `marimo edit notebook.py`. The notebook has a c
 
 - These are upper bounds from explicit constructions. Nobody knows how far they are from optimal.
 - The previous best at every N is a 2026 web notebook from Dualverse Station, not a peer-reviewed paper. We compare against it because it is the strongest value we could find.
-- The N = 128 margin over that value is small (0.10%). The margins over AlphaEvolve and GPT-5.4 Pro are large.
+- The N = 128 margin over that value is small (0.15%). The margins over AlphaEvolve and GPT-5.4 Pro are large.
 
 ## Repository
 
