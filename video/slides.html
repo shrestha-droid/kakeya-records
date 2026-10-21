@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kakeya Records</title>
+<style>
+:root { --bg: #faf8f5; --fg: #1d1d1f; --mute: #6b6b70; --acc: #d4552b; }
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: -apple-system, "Helvetica Neue", Arial, sans-serif; }
+.s { display: none; position: absolute; inset: 0; padding: 6vh 7vw; flex-direction: column; justify-content: center; }
+.s.on { display: flex; }
+h1 { font-size: 5.2vw; line-height: 1.05; margin: 0 0 2vh; letter-spacing: -0.02em; }
+h2 { font-size: 3.4vw; margin: 0 0 3vh; letter-spacing: -0.01em; }
+p, li { font-size: 2.1vw; line-height: 1.4; margin: 0 0 1.4vh; }
+.mute { color: var(--mute); } .acc { color: var(--acc); }
+.big { font-size: 7vw; font-weight: 800; color: var(--acc); letter-spacing: -0.03em; margin: 1vh 0; }
+img { max-width: 100%; max-height: 62vh; object-fit: contain; }
+table { border-collapse: collapse; font-size: 2vw; margin-top: 2vh; }
+td, th { padding: 0.6vh 1.6vw; border-bottom: 1px solid #ddd; text-align: right; } td:first-child, th:first-child { text-align: left; }
+.us { color: var(--acc); font-weight: 700; }
+code { font-size: 1.7vw; background: #eee; padding: 0.3vh 0.6vw; border-radius: 4px; }
+.n { position: fixed; right: 2vw; bottom: 2vh; color: var(--mute); font-size: 1.3vw; }
+</style></head><body>
+
+<section class="s on">
+  <p class="mute">4th Open Scientific Intelligence Hackathon · solo entry</p>
+  <h1>Kakeya Records</h1>
+  <p>An AI agent finds new best-known Kakeya constructions:<br><span class="acc">63 minutes, one 8 GB laptop.</span></p>
+  <p class="mute">Shrestha Pandey · Claude Code (Claude Opus 5.5)</p>
+</section>
+
+<section class="s">
+  <h2>The problem: thin-triangle Kakeya, N = 128</h2>
+  <ul>
+    <li>128 directions, and one thin triangle per direction containing a unit segment.</li>
+    <li>Slide the triangles up or down to make the <b>union as small as possible</b>.</li>
+    <li>Keich 1999 → AlphaEvolve 2025 → GPT-5.4 Pro 2026 → Dualverse 2026</li>
+    <li class="mute">Open problem: the optimum is unknown. It is HorizonMath problem <code>keich_thin_triangles_128</code>.</li>
+  </ul>
+</section>
+
+<section class="s">
+  <h2>New best-known values at every published N</h2>
+  <div class="big">0.106962530</div>
+  <p>union area at N = 128: <span class="acc">6.84%</span> below AlphaEvolve, <span class="acc">2.00%</span> below GPT-5.4 Pro</p>
+  <table>
+    <tr><th>N</th><th>AlphaEvolve</th><th>GPT-5.4 Pro</th><th>Previous best</th><th>This work</th></tr>
+    <tr><td>32</td><td>0.141647</td><td>–</td><td>0.138596</td><td class="us">0.138432</td></tr>
+    <tr><td>64</td><td>0.121735</td><td>–</td><td>0.120901</td><td class="us">0.120887</td></tr>
+    <tr><td>128</td><td>0.114810</td><td>0.109148</td><td>0.107067</td><td class="us">0.106962530</td></tr>
+  </table>
+</section>
+
+<section class="s">
+  <h2>How: four ideas</h2>
+  <ul>
+    <li><b>Exact slice formula:</b> l(x) = L + Σ min(gap, L). No geometry library, exact gradient.</li>
+    <li><b>Annealed soft-min + Adam</b> to slide through the kinks.</li>
+    <li><b>Lifting lemma:</b> each triangle is exactly two thinner children, so we search coarse-to-fine, N = 8 → 128.</li>
+    <li><b>Memetic islands</b> on a Numba kernel: mutate, descend, migrate.</li>
+  </ul>
+</section>
+
+<section class="s">
+  <h2>What it found: focusing, not flattening</h2>
+  <img src="union.png" alt="Keich construction next to the new construction">
+</section>
+
+<section class="s">
+  <h2>Three focal heights where the union collapses</h2>
+  <img src="profile.png" alt="Slice width along the height for Keich and the new construction">
+</section>
+
+<section class="s">
+  <h2>Don't trust us: verify in one minute</h2>
+  <ul>
+    <li>The official HorizonMath validator passes.</li>
+    <li>An independent <b>exact rational</b> verifier checks every float exactly across all 32,640 breakpoints.</li>
+    <li>An interactive <b>marimo</b> notebook ships with the repository.</li>
+  </ul>
+  <p><code>python src/verify_exact.py results/n128.json</code></p>
+  <p class="mute">github.com/shrestha-droid/kakeya-records</p>
+</section>
+
+<section class="s">
+  <h2>Limits and next steps</h2>
+  <ul>
+    <li>These are upper bounds; optimality is open. The margin over the 2026 best is small (0.10%).</li>
+    <li>Next: LP-duality lower bounds, and turning the focal structure into an asymptotic family.</li>
+  </ul>
+  <p class="acc" style="margin-top:4vh">One agent on a laptop beat AlphaEvolve in 7 minutes. Thank you!</p>
+</section>
+
+<div class="n" id="n"></div>
+<script>
+const S = [...document.querySelectorAll('.s')]; let i = 0;
+const show = k => { i = Math.max(0, Math.min(S.length - 1, k)); S.forEach((s, j) => s.classList.toggle('on', j === i)); document.getElementById('n').textContent = (i + 1) + ' / ' + S.length; };
+addEventListener('keydown', e => { if (['ArrowRight', ' ', 'PageDown'].includes(e.key)) show(i + 1); if (['ArrowLeft', 'PageUp'].includes(e.key)) show(i - 1); });
+addEventListener('click', e => show(e.clientX > innerWidth / 3 ? i + 1 : i - 1));
+show((parseInt(location.hash.slice(1)) || 1) - 1);
+</script>
+</body></html>

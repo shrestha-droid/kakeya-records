@@ -1,0 +1,6 @@
+HorizonMath
+__pycache__/
+.venv/
+pool*/
+*.npy
+__marimo__/

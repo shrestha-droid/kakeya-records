@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><title>Kakeya Records: one-page summary</title>
+<style>
+@page { size: Letter; margin: 0.4in 0.45in; }
+body { font: 9.2pt/1.32 Georgia, "Times New Roman", serif; color: #1d1d1f; margin: 0; }
+h1 { font: 700 15.5pt/1.2 -apple-system, "Helvetica Neue", Arial, sans-serif; margin: 0 0 3px; }
+.sub { font: 9pt -apple-system, "Helvetica Neue", Arial, sans-serif; color: #555; margin-bottom: 8px; }
+h2 { font: 700 10.5pt -apple-system, "Helvetica Neue", Arial, sans-serif; margin: 9px 0 3px; color: #b8431f; }
+p { margin: 0 0 5px; text-align: justify; }
+img { width: 100%; margin: 4px 0 2px; }
+.cap { font-size: 8.3pt; color: #444; margin-bottom: 6px; }
+table { border-collapse: collapse; width: 100%; font: 8.8pt -apple-system, "Helvetica Neue", Arial, sans-serif; margin: 3px 0 6px; }
+th, td { border-bottom: 1px solid #ddd; padding: 2px 5px; text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+td.us { font-weight: 700; color: #b8431f; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+ul { margin: 0 0 4px 16px; padding: 0; } li { margin: 0 0 2px; }
+code { font-size: 8.5pt; }
+</style></head><body>
+<h1>Kakeya Records: an AI agent sets new best-known thin-triangle Kakeya constructions in one hour on a laptop</h1>
+<div class="sub">4th Open Scientific Intelligence Hackathon · solo entry · Claude Code (Claude Opus 5.5) on an 8 GB Apple M1 · code and certificates: github.com/shrestha-droid/kakeya-records</div>
+
+<p><b>Problem.</b> Take N = 128 directions a<sub>i</sub> = i/N. For each one, place a thin triangle with vertical base [b<sub>i</sub>&minus;&delta;, b<sub>i</sub>] at x = 0 (&delta; = 1/N) and apex (1, a<sub>i</sub>+b<sub>i</sub>). Choose the intercepts b<sub>i</sub> to <i>minimise the area of the union</i>. This discretised Kakeya needle problem is open: Keich (1999) gave the asymptotically optimal 1/log N construction, but the best finite configurations are unknown. It is HorizonMath problem <code>keich_thin_triangles_128</code>. That benchmark collects open problems whose candidate solutions can be checked automatically, and a strong frontier model (GPT-5.4 Pro) set the previous benchmark result there.</p>
+
+<img src="figure.png" alt="Union of the 128 triangles of the new construction, its cross-section profile against Keich, and a comparison with prior constructions">
+<div class="cap"><b>Figure.</b> (a) The new N = 128 construction. (b) Slice length l(x), whose integral is the area. Keich's profile is a flat staircase; ours pays more at x = 0 so that triangle bundles can converge at three focal heights (x &asymp; 0.17, 0.44, 0.66). (c) Best constructions over time.</div>
+
+<div class="cols"><div>
+<h2>Results (union area, lower is better)</h2>
+<table><tr><th>N</th><th>AlphaEvolve 2025</th><th>Prev. best 2026</th><th>This work</th></tr>
+<tr><td>32</td><td>0.141647</td><td>0.138596</td><td class="us">0.138432</td></tr>
+<tr><td>64</td><td>0.121735</td><td>0.120901</td><td class="us">0.120887</td></tr>
+<tr><td>128</td><td>0.114810</td><td>0.107067</td><td class="us">0.106962530</td></tr></table>
+<p>At N = 128 the new value is 0.10% below the previous best (Dualverse Station), 2.00% below GPT-5.4 Pro (HorizonMath), 6.84% below AlphaEvolve and 10.27% below Keich. Two independent checks certify every value. One is the benchmark's official validator. The other is our verifier, which computes the <i>exact rational</i> area of the stored configuration: it converts every float exactly, then integrates the piecewise-linear slice length exactly over all 32,640 breakpoints.</p>
+<h2>Agentic workflow</h2>
+<p>The agent surveyed the 113 HorizonMath problems, read the validators, and picked a continuous construction problem where a laptop could compete. It then derived a fast formulation, checked the literature (finding the stronger 2026 value), and iterated. It beat AlphaEvolve and GPT-5.4 Pro 7 minutes after starting, and set the record at minute 63.</p>
+</div><div>
+<h2>Method</h2>
+<ul>
+<li><b>Exact slice formula.</b> All N intervals in a slice have the same length L = &delta;(1&minus;x), so l(x) = L + &Sigma; min(g<sub>k</sub>, L) over gaps between sorted tops. That gives the area and an exact subgradient with no geometry library.</li>
+<li><b>Annealed soft-min + Adam.</b> A smoothed min with temperature going to 0 lets gradients escape the piecewise-linear kinks.</li>
+<li><b>Lifting lemma.</b> A triangle at resolution N is exactly the union of two resolution-2N children (intercepts b and b&minus;1/2N). Optimal area is therefore non-increasing under dyadic refinement, which justifies a coarse-to-fine beam search from N = 8 to 128.</li>
+<li><b>Memetic islands.</b> Mutations (noise, dyadic crossover, block shift, tilt, reset) are each followed by descent, with migration between islands. A Numba kernel uses insertion sort warm-started across neighbouring slices for about 4&times; throughput.</li>
+<li><b>Symmetry.</b> The problem is invariant under b<sub>i</sub> &rarr; &delta; &minus; b<sub>N&minus;1&minus;i</sub>, yet optima are asymmetric.</li>
+</ul>
+<h2>Significance and limits</h2>
+<p>A single agent with a few CPU-hours beat a frontier-model ensemble (AlphaEvolve) by 6.8%, and the best previous agentic result by a smaller margin. Reproducing it takes one minute with the provided verifier. These are upper bounds, and optimality is open. The previous best comes from a 2026 web notebook, not a journal. Next steps: lower bounds via LP duality, and asymptotic families extrapolated from the focal structure.</p>
+</div></div>
+</body></html>
