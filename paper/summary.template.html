@@ -18,7 +18,7 @@ ul { margin: 0 0 4px 16px; padding: 0; } li { margin: 0 0 2px; }
 code { font-size: 8.5pt; }
 </style></head><body>
 <h1>Kakeya Records: an AI agent sets new best-known thin-triangle Kakeya constructions in one hour on a laptop</h1>
-<div class="sub">4th Open Scientific Intelligence Hackathon · solo entry · Claude Code (Claude Opus 5.5) on an 8 GB Apple M1 · code and certificates: github.com/shrestha-droid/kakeya-records</div>
+<div class="sub"><b>Shrestha Pandey</b> · 4th Open Scientific Intelligence Hackathon · solo entry, directing Claude Code (Claude Opus 5.5) on an 8 GB Apple M1 · code and certificates: github.com/shrestha-droid/kakeya-records</div>
 
 <p><b>Problem.</b> Take N = 128 directions a<sub>i</sub> = i/N. For each one, place a thin triangle with vertical base [b<sub>i</sub>&minus;&delta;, b<sub>i</sub>] at x = 0 (&delta; = 1/N) and apex (1, a<sub>i</sub>+b<sub>i</sub>). Choose the intercepts b<sub>i</sub> to <i>minimise the area of the union</i>. This discretised Kakeya needle problem is open: Keich (1999) gave the asymptotically optimal 1/log N construction, but the best finite configurations are unknown. It is HorizonMath problem <code>keich_thin_triangles_128</code>. That benchmark collects open problems whose candidate solutions can be checked automatically, and a strong frontier model (GPT-5.4 Pro) set the previous benchmark result there.</p>
 
@@ -33,7 +33,7 @@ code { font-size: 8.5pt; }
 <tr><td>128</td><td>0.114810</td><td>0.107067</td><td class="us">{N128}</td></tr></table>
 <p>At N = 128 the new value is {GAIN_DV} below the previous best (Dualverse Station), {GAIN_GPT} below GPT-5.4 Pro (HorizonMath), {GAIN_AE} below AlphaEvolve and {GAIN_K} below Keich. Two independent checks certify every value. One is the benchmark's official validator. The other is our verifier, which computes the <i>exact rational</i> area of the stored configuration: it converts every float exactly, then integrates the piecewise-linear slice length exactly over all 32,640 breakpoints.</p>
 <h2>Agentic workflow</h2>
-<p>The agent surveyed the 113 HorizonMath problems, read the validators, and picked a continuous construction problem where a laptop could compete. It then derived a fast formulation, checked the literature (finding the stronger 2026 value), and iterated. It beat AlphaEvolve and GPT-5.4 Pro 7 minutes after starting, and set the record at minute 63.</p>
+<p>I led the project and directed the agent toward a verifiable record within the event. The agent surveyed the 113 HorizonMath problems, read the validators, and picked a continuous construction problem where a laptop could compete. It then derived a fast formulation, checked the literature (finding the stronger 2026 value), and iterated. It beat AlphaEvolve and GPT-5.4 Pro 7 minutes after starting, and set the record at minute 63.</p>
 </div><div>
 <h2>Method</h2>
 <ul>

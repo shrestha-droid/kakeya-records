@@ -5,13 +5,13 @@ Speak at normal speed; don't speed up the audio. The script is about 480 words, 
 ---
 
 **[Slide 1: title] (0:00–0:20)**
-Hi, I'm Shrestha. This is a solo entry. The question the organisers asked was whether two days is enough for an AI to make a real discovery. In our case it took sixty-three minutes on an eight-gigabyte laptop. I'll show you what was found and how you can check it yourself in one minute.
+Hi, I'm Shrestha. This is a solo entry. The organisers asked whether two days is enough for AI to make a real discovery. I wanted to test that directly, so I ran an AI research agent, Claude Code, and directed it at one goal: a verifiable record inside the hackathon. The first record took sixty-three minutes on an eight-gigabyte laptop. I'll show you what was found and how you can check it yourself in one minute.
 
 **[Slide 2: the problem] (0:20–0:55)**
 This is the Kakeya needle problem, in a discrete form. Take 128 directions, and for each one place a thin triangle that contains a unit segment in that direction. You can slide each triangle up or down, and you want the union to cover as little area as possible. Keich found the classic construction in 1999. Since then, Google DeepMind's AlphaEvolve, GPT-5.4 Pro on the HorizonMath benchmark, and an agent platform called Dualverse have each pushed the best known area lower. Whether any of these is optimal is an open question.
 
 **[Slide 3: the result] (0:55–1:30)**
-Our agent was Claude Code running Claude Opus 5.5, and it set new best-known values at every size with a published result. At 128 directions the union area is {N128}. That's {GAIN_AE} smaller than AlphaEvolve, {GAIN_GPT} smaller than GPT-5.4 Pro, and below the previous best. We also set records at 32 and 64 directions.
+Working with the agent, we set new best-known values at every size with a published result. At 128 directions the union area is {N128}. That's {GAIN_AE} smaller than AlphaEvolve, {GAIN_GPT} smaller than GPT-5.4 Pro, and below the previous best. We also set records at 32 and 64 directions.
 
 **[Slide 4: how] (1:30–2:30)**
 Four ideas made this work on a laptop.

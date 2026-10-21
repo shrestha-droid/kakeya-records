@@ -1,8 +1,8 @@
 # Kakeya Records: new best-known thin-triangle Kakeya constructions found by an AI agent
 
-**4th Open Scientific Intelligence Hackathon, 21–22 Oct 2026. Solo entry.**
+**Shrestha Pandey · 4th Open Scientific Intelligence Hackathon, 21–22 Oct 2026 · solo entry**
 
-An AI coding agent, Claude Code running Claude Opus 5.5, worked on an 8 GB M1 laptop. It picked an open problem from the [HorizonMath](https://github.com/ewang26/HorizonMath) benchmark and, **63 minutes after starting**, found a construction that beats every published value for the *thin-triangle Kakeya problem*. The previous published values came from Keich (1999), Google DeepMind's AlphaEvolve (2025), GPT-5.4 Pro (HorizonMath, 2026) and Dualverse Station (2026). Each record below is checked twice: by the benchmark's official validator, and by an independent verifier that uses **exact rational arithmetic**.
+I set out to answer the hackathon's own question: can one person directing an AI research agent reach a real, verifiable discovery within the event? I ran Claude Code (Claude Opus 5.5) on an 8 GB M1 laptop as my research agent. It picked an open problem from the [HorizonMath](https://github.com/ewang26/HorizonMath) benchmark and, **63 minutes after starting**, found a construction that beats every published value for the *thin-triangle Kakeya problem*. The previous published values came from Keich (1999), Google DeepMind's AlphaEvolve (2025), GPT-5.4 Pro (HorizonMath, 2026) and Dualverse Station (2026). Each record below is checked twice: by the benchmark's official validator, and by an independent verifier that uses **exact rational arithmetic**.
 
 ![figure](paper/figure.png)
 
@@ -56,6 +56,11 @@ To explore it interactively, run `marimo edit notebook.py`. The notebook has a c
 | **00:05** | **0.1070334 certified: new record for N = 128** |
 | 00:20 | 0.1069676 for N = 128; 0.1384322 for N = 32 (record) |
 | 00:27 | 0.1208867 for N = 64 (record): new best at every N with a published value |
+
+## Roles
+
+- **Shrestha Pandey: project lead.** Entered solo, set the goal (a verifiable record inside the hackathon window, aimed at winning), directed the agent throughout, pushed it to keep going past the first win to beat the strongest prior value and to cover every published size, reviewed and approved what was published, and prepared and presented the submission.
+- **Claude Code (Claude Opus 5.5): research agent.** Surveyed the benchmark and chose the problem, derived the formulation, wrote the search and verification code, and ran the experiments.
 
 ## Honest caveats
 
