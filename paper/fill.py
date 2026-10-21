@@ -8,7 +8,7 @@ pct = lambda old: f"{(old - a) / old * 100:.2f}%"
 vals = {"N32": fmt(32), "N64": fmt(64), "N128": f"{a:.9f}", "GAIN_DV": pct(DV[128]), "GAIN_GPT": pct(0.1091479892),
         "GAIN_AE": pct(0.1148103258), "GAIN_K": pct(0.1192072654)}
 for src, dst in [("paper/README.template.md", "README.md"), ("paper/summary.template.html", "paper/summary.html"),
-                 ("video/script.template.md", "video/script.md"), ("video/slides.template.html", "video/slides.html")]:
+                 ("video/script.template.md", "video/script.md"), ("video/slides.template.html", "video/slides.html"), ("paper/index.template.html", "index.html")]:
     try:
         s = open(src).read()
     except FileNotFoundError:

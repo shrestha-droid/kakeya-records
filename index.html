@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kakeya Records</title>
+<meta name="description" content="An AI agent finds new best-known thin-triangle Kakeya constructions, certified exactly.">
+<style>
+:root { --bg: #faf8f5; --fg: #1d1d1f; --mute: #6b6b70; --acc: #d4552b; --card: #fff; --line: #e6e2dc; }
+@media (prefers-color-scheme: dark) { :root { --bg: #141416; --fg: #ececee; --mute: #9a9aa2; --acc: #ef7a52; --card: #1d1d20; --line: #2c2c31; } }
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.6 -apple-system, "Helvetica Neue", Arial, sans-serif; }
+main { max-width: 980px; margin: 0 auto; padding: 56px 16px 80px; }
+.kicker { color: var(--mute); font-size: 14px; letter-spacing: .04em; text-transform: uppercase; }
+h1 { font-size: clamp(34px, 6vw, 58px); line-height: 1.04; letter-spacing: -0.025em; margin: 10px 0 14px; }
+.lede { font-size: 20px; color: var(--mute); max-width: 720px; }
+.num { font-size: clamp(44px, 9vw, 92px); font-weight: 800; color: var(--acc); letter-spacing: -0.035em; margin: 28px 0 0; line-height: 1; }
+.numcap { color: var(--mute); margin-bottom: 26px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin: 18px 0 36px; }
+.btns a { text-decoration: none; color: var(--fg); border: 1px solid var(--line); background: var(--card); padding: 9px 16px; border-radius: 999px; font-size: 15px; }
+.btns a.p { background: var(--acc); border-color: var(--acc); color: #fff; }
+figure { margin: 0 0 30px; background: #fff; border-radius: 14px; padding: 14px; border: 1px solid var(--line); }
+figure img { width: 100%; display: block; }
+figcaption { color: #555; font-size: 14px; margin-top: 8px; }
+h2 { font-size: 24px; letter-spacing: -0.01em; margin: 40px 0 10px; }
+.tbl { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
+th, td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+th { color: var(--mute); font-weight: 600; }
+td.us { color: var(--acc); font-weight: 700; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 16px 18px; }
+.card b { display: block; margin-bottom: 4px; }
+.card p { margin: 0; color: var(--mute); font-size: 15px; }
+pre { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px; overflow-x: auto; font-size: 13.5px; }
+footer { color: var(--mute); font-size: 14px; margin-top: 50px; }
+a { color: var(--acc); }
+</style></head><body><main>
+<div class="kicker">4th Open Scientific Intelligence Hackathon · Oct 2026</div>
+<h1>Kakeya Records</h1>
+<p class="lede">An AI agent (Claude Code, Opus 5.5) on an 8 GB laptop found new best-known constructions for an open discrete-geometry problem: the thin-triangle Kakeya problem. It set the first record 63 minutes after starting, and every value is certified exactly.</p>
+<div class="num">0.106962440</div>
+<div class="numcap">union area of 128 thin triangles, one per direction (lower is better). That is 6.84% below AlphaEvolve and 2.00% below GPT-5.4 Pro.</div>
+<div class="btns">
+  <a class="p" href="https://github.com/shrestha-droid/kakeya-records">Code &amp; certificates</a>
+  <a href="paper/summary.pdf">One-page summary (PDF)</a>
+  <a href="video/slides.html">Slides</a>
+  <a href="results/n128.json">N=128 intercepts</a>
+</div>
+<figure><img src="paper/figure.png" alt="New construction, its cross-section profile against Keich's, and a comparison with prior constructions">
+<figcaption>(a) The new N = 128 construction. (b) The slice width along the height: bundles of triangles converge at three focal heights instead of keeping Keich's flat staircase. (c) Best known constructions over time.</figcaption></figure>
+
+<h2>Best known union areas</h2>
+<div class="tbl"><table>
+<tr><th>N</th><th>Keich 1999</th><th>AlphaEvolve 2025</th><th>GPT-5.4 Pro 2026</th><th>Previous best 2026</th><th>This work</th></tr>
+<tr><td>32</td><td>0.154590</td><td>0.141647</td><td>–</td><td>0.138596</td><td class="us">0.138432</td></tr>
+<tr><td>64</td><td>0.134694</td><td>0.121735</td><td>–</td><td>0.120901</td><td class="us">0.120887</td></tr>
+<tr><td>128</td><td>0.119207</td><td>0.114810</td><td>0.109148</td><td>0.107067</td><td class="us">0.106962440</td></tr>
+</table></div>
+
+<h2>How it works</h2>
+<div class="grid">
+<div class="card"><b>Exact slice formula</b><p>Every slice is N intervals of equal length L, so the width is L + &Sigma; min(gap, L). That gives the area and an exact gradient with no geometry library.</p></div>
+<div class="card"><b>Annealed soft-min</b><p>The caps are smoothed with a temperature that goes to 0, and Adam slides through the kinks of the piecewise-linear objective.</p></div>
+<div class="card"><b>Lifting lemma</b><p>Each triangle is exactly the union of two thinner children, so optimal area can only fall under refinement. The search runs coarse-to-fine from N = 8 to 128.</p></div>
+<div class="card"><b>Memetic islands</b><p>Populations of local optima are mutated (crossover, shifts, tilts, resets) and re-descended on a Numba kernel, with migration between islands.</p></div>
+</div>
+
+<h2>Verify in one minute</h2>
+<pre>git clone https://github.com/shrestha-droid/kakeya-records &amp;&amp; cd kakeya-records
+git clone https://github.com/ewang26/HorizonMath
+python src/verify_exact.py results/n128.json      # exact rational arithmetic
+marimo edit notebook.py                           # interactive certificate + official validator</pre>
+
+<footer>Upper bounds from explicit constructions; optimality is open. The previous best is Dualverse Station (2026). Built by Shrestha Pandey with Claude Code. MIT licensed.</footer>
+</main></body></html>
