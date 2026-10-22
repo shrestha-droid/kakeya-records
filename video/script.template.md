@@ -20,11 +20,11 @@ Second, we smooth those caps with a temperature that we anneal down to zero, and
 Third, a lifting lemma: every triangle is exactly the union of two thinner children. That lets us optimise from 8 directions up to 128.
 Fourth, an evolutionary search over populations of local optima, run on a compiled kernel.
 
-**[Slides 5–6: what it found, press → after the first sentence] (2:30–3:05)**
-The structure is interesting. Keich's construction keeps every slice about the same width. The optimised one pays for a wider slice at the base, and in return bundles of triangles converge at three focal heights, where the cross-section collapses. It's a different shape of solution, not just a polished version of the old one.
+**[Slides 5–6: what it found, press → after the first sentence] (2:30–2:55)**
+The structure is interesting. Keich's construction keeps every slice about the same width. Ours pays for a wider base, and in return bundles of triangles converge at three focal heights, where the cross-section collapses.
 
-**[Slide 7: trust it] (3:05–3:35)**
-Don't take our word for it. Every number passes the benchmark's official validator, and a second verifier we wrote computes the exact rational area of the stored configuration, with no floating point anywhere. The repository has both, plus an interactive marimo notebook.
+**[Slide 7, then LIVE DEMO: switch to browser and Terminal] (2:55–3:35)**
+Don't take our word for it. *(Switch to the browser: shrestha-droid.github.io/kakeya-records and scroll once.)* This is the live project page, with the code, the certificates and the notebook. *(Switch to Terminal and run the command below. It takes about one second.)* This is the benchmark's own official validator scoring our configuration: valid, with an area below the previous best. A second verifier in the repository recomputes it in exact fractions, with no floating point anywhere.
 
 **[Slide 8: close] (3:35–3:45)**
 These are upper bounds, so optimality is still open, and the margin over the previous best is small. But a single agent on a laptop beat AlphaEvolve in seven minutes. Thanks for watching.
