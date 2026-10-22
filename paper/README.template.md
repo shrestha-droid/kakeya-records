@@ -4,6 +4,8 @@
 
 I set out to answer the hackathon's own question: can one person directing an AI research agent reach a real, verifiable discovery within the event? I ran Claude Code (Claude Opus 5.5) on an 8 GB M1 laptop as my research agent. It picked an open problem from the [HorizonMath](https://github.com/ewang26/HorizonMath) benchmark and, **63 minutes after starting**, found a construction that beats every published value for the *thin-triangle Kakeya problem*. The previous published values came from Keich (1999), Google DeepMind's AlphaEvolve (2025), GPT-5.4 Pro (HorizonMath, 2026) and Dualverse Station (2026). Each record below is checked twice: by the benchmark's official validator, and by an independent verifier that uses **exact rational arithmetic**.
 
+**▶ Video (4 min): [https://youtu.be/O5og9H8p65I](https://youtu.be/O5og9H8p65I)** · Project page: https://shrestha-droid.github.io/kakeya-records/
+
 ![figure](paper/figure.png)
 
 ## The problem
