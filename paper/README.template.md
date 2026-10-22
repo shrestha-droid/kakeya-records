@@ -18,6 +18,8 @@ Fix N slopes a_i = i/N and δ = 1/N. Each slope gets a thin triangle with a vert
 | 64 | 0.134694 | 0.121735 | – | 0.120901 | **{N64}** |
 | 128 | 0.119207 | 0.114810 | 0.109148 | 0.107067 | **{N128}** |
 | 256 | 0.106832 | – | – | none published | **{N256}** (first optimised value) |
+| 512 | 0.096732 | – | – | none published | **{N512}** (first optimised value) |
+| 1024 | 0.088343 | – | – | none published | **{N1024}** (first optimised value) |
 
 At N = 128 the new construction is {GAIN_DV} below the previous best, {GAIN_GPT} below GPT-5.4 Pro, {GAIN_AE} below AlphaEvolve and {GAIN_K} below Keich. The intercepts are in [`results/`](results/). Each file stores the float64 intercepts and the **exact** area of exactly that configuration.
 
@@ -26,7 +28,8 @@ At N = 128 the new construction is {GAIN_DV} below the previous best, {GAIN_GPT}
 ```bash
 git clone https://github.com/ewang26/HorizonMath
 python -c "import json,sys; sys.path.insert(0,'HorizonMath'); from validators.keich_thin_triangles_128 import validate; print(validate({'intercepts': json.load(open('results/n128.json'))['intercepts']}))"
-python src/verify_exact.py results/n128.json   # exact rational arithmetic, any N
+python src/verify_exact.py results/n128.json        # exact rational arithmetic, any N (reference)
+python src/verify_exact_fast.py results/n1024.json  # same exact result in integer arithmetic, parallel; tests/ checks they agree
 ```
 
 To explore it interactively, run `marimo edit notebook.py`. The notebook has a cross-section slider, the l(x) profile, the comparison table and a live run of the official validator.

@@ -31,7 +31,7 @@ code { font-size: 8.5pt; }
 <tr><td>32</td><td>0.141647</td><td>0.138596</td><td class="us">{N32}</td></tr>
 <tr><td>64</td><td>0.121735</td><td>0.120901</td><td class="us">{N64}</td></tr>
 <tr><td>128</td><td>0.114810</td><td>0.107067</td><td class="us">{N128}</td></tr>
-<tr><td>256</td><td>–</td><td>– (Keich 0.106832)</td><td class="us">{N256}</td></tr></table>
+<tr><td>256 / 512 / 1024</td><td>–</td><td>Keich .1068 / .0967 / .0883</td><td class="us">{N256} / {N512} / {N1024}</td></tr></table>
 <p>At N = 128 the new value is {GAIN_DV} below the previous best (Dualverse Station), {GAIN_GPT} below GPT-5.4 Pro (HorizonMath), {GAIN_AE} below AlphaEvolve and {GAIN_K} below Keich. Two independent checks certify every value. One is the benchmark's official validator. The other is our verifier, which computes the <i>exact rational</i> area of the stored configuration: it converts every float exactly, then integrates the piecewise-linear slice length exactly over all 32,640 breakpoints.</p>
 <h2>Agentic workflow</h2>
 <p>I led the project and directed the agent toward a verifiable record within the event. The agent surveyed the 113 HorizonMath problems, read the validators, and picked a continuous construction problem where a laptop could compete. It then derived a fast formulation, checked the literature (finding the stronger 2026 value), and iterated. It beat AlphaEvolve and GPT-5.4 Pro 7 minutes after starting, and set the record at minute 63.</p>

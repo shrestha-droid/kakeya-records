@@ -54,3 +54,5 @@ Cut the second paragraph of slide 2 (the history), since slide 3 covers it. That
 | 64 | 0.120901 | {N64} |
 | 128 | 0.107067 | {N128} |
 | 256 | none published (Keich 0.106832) | {N256} |
+| 512 | none published (Keich 0.096732) | {N512} |
+| 1024 | none published (Keich 0.088343) | {N1024} |
