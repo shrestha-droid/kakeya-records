@@ -11,7 +11,7 @@ Hi, I'm Shrestha. This is a solo entry. The organisers asked whether two days is
 This is the Kakeya needle problem, in a discrete form. Take 128 directions, and for each one place a thin triangle that contains a unit segment in that direction. You can slide each triangle up or down, and you want the union to cover as little area as possible. Keich found the classic construction in 1999. Since then, Google DeepMind's AlphaEvolve, GPT-5.4 Pro on the HorizonMath benchmark, and an agent platform called Dualverse have each pushed the best known area lower. Whether any of these is optimal is an open question.
 
 **[Slide 3: the result] (0:55–1:30)**
-Working with the agent, we set new best-known values at every size with a published result. At 128 directions the union area is 0.106909327. That's 6.88% smaller than AlphaEvolve, 2.05% smaller than GPT-5.4 Pro, and below the previous best. We also set records at 32 and 64 directions.
+Working with the agent, we set new best-known values at every size with a published result. At 128 directions the union area is 0.106909327. That's 6.88% smaller than AlphaEvolve, 2.05% smaller than GPT-5.4 Pro, and below the previous best. We also set records at 32 and 64 directions, and gave the first optimised construction at 256.
 
 **[Slide 4: how] (1:30–2:30)**
 Four ideas made this work on a laptop.

@@ -4,10 +4,10 @@ import glob, json, os, subprocess, sys, time
 import numpy as np
 from kakeya import official
 from verify_exact import exact_area
-# previous best published values (Dualverse Station, 2026)
-PREV = {32: 0.138596129670274, 64: 0.120900580819172, 128: 0.107066636561635}
+PREV = {32: 0.138596129670274, 64: 0.120900580819172, 128: 0.107066636561635,
+        256: 0.10683227734375}  # n=256: no published optimised value; Keich's construction
 os.makedirs("certified", exist_ok=True)
-for n in (32, 64, 128):
+for n in (32, 64, 128, 256):
     fs = glob.glob(f"pool{n}/isl*.json")
     if not fs: continue
     f = min(fs, key=lambda f: json.load(open(f))["grid_area"])
