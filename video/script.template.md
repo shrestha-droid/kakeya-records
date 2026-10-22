@@ -20,10 +20,10 @@ Hi, I'm Shrestha, and this is a solo entry. The organisers asked whether two day
 This is the Kakeya needle problem, in a discrete form. Take 128 directions. For each one, place a thin triangle that contains a line segment pointing that way. You can slide each triangle up or down, and the goal is to make the union cover as little area as possible.
 Keich found the classic construction in 1999. Since then, Google DeepMind's AlphaEvolve, GPT-5.4 Pro, and an agent platform called Dualverse have each pushed the best known area lower. Nobody knows what the optimum is.
 
-### Slide 3: the result (0:55–1:25)
-Working with the agent, we set new best-known values at every size that has a published result. At 128 directions, the area is {N128}. That's {GAIN_AE} smaller than AlphaEvolve, {GAIN_GPT} smaller than GPT-5.4 Pro, and below the previous best. We also set records at 32 and 64 directions, and produced the first optimised construction at 256.
+### Slide 3: the result (0:55–1:30)
+Working with the agent, we set new best-known values at every size that has a published result. At 128 directions, the area is {N128}. That's {GAIN_AE} smaller than AlphaEvolve, {GAIN_GPT} smaller than GPT-5.4 Pro, and below the previous best. We also set records at 32 and 64 directions. And at 256, 512 and 1024 directions, where nobody had published an optimised result, we produced the first ones, each about ten percent below Keich's classic construction.
 
-### Slide 4: how (1:25–2:20)
+### Slide 4: how (1:30–2:20)
 Four ideas made this possible on a laptop.
 **One:** an exact formula. Every vertical slice of the union is 128 intervals of the same length. So the slice width is that length plus the gaps between neighbouring intervals, each capped at the interval length. No geometry library, and we get an exact gradient.
 **Two:** we smooth those caps, then slowly sharpen them back while running gradient descent.
