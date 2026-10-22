@@ -71,7 +71,7 @@ To explore it interactively, run `marimo edit notebook.py`. The notebook has a c
 ## Honest caveats
 
 - These are upper bounds from explicit constructions. Nobody knows how far they are from optimal.
-- The previous best at every N is a 2026 web notebook from Dualverse Station, not a peer-reviewed paper. We compare against it because it is the strongest value we could find.
+- The previous best at every N comes from Dualverse Station (Chung, Du, Wesley, arXiv:2608.23691, 2026), a preprint. A prior-art search with Valency Bond found no published construction that beats ours: see [PRIOR_ART_VALENCY.md](PRIOR_ART_VALENCY.md).
 - The N = 128 margin over that value is small ({GAIN_DV}). The margins over AlphaEvolve and GPT-5.4 Pro are large.
 
 ## Repository
@@ -86,4 +86,4 @@ To explore it interactively, run `marimo edit notebook.py`. The notebook has a c
 
 ## References
 
-U. Keich, *On L^p bounds for Kakeya maximal functions and the Minkowski dimension in R²*, Bull. LMS (1999) · A. Novikov et al., *AlphaEvolve* (2025) · B. Georgiev, J. Gómez-Serrano, T. Tao, A. Z. Wagner, *Mathematical exploration and discovery at scale* (2025) · E. Y. Wang et al., *HorizonMath* (arXiv:2603.15617, 2026) · Dualverse Station, *Discretized Kakeya Needle* (2026).
+U. Keich, *On L^p bounds for Kakeya maximal functions and the Minkowski dimension in R²*, Bull. LMS (1999) · A. Novikov et al., *AlphaEvolve* (2025) · B. Georgiev, J. Gómez-Serrano, T. Tao, A. Z. Wagner, *Mathematical exploration and discovery at scale* (2025) · E. Y. Wang et al., *HorizonMath* (arXiv:2603.15617, 2026) · S. Chung, W. Du, W. J. Wesley, *Autonomous Mathematical Discovery in an Open-World Multi-Agent Environment*, arXiv:2608.23691 (2026).

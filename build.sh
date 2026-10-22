@@ -6,4 +6,4 @@ CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 MPLBACKEND=Agg $PY paper/make_figure.py
 MPLBACKEND=Agg $PY video/make_assets.py
 $PY paper/fill.py
-"$CHROME" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=paper/summary.pdf "file://$PWD/paper/summary.html" 2>/dev/null
+perl -e "alarm 90; exec @ARGV" "$CHROME" --headless=new --disable-gpu --no-pdf-header-footer --print-to-pdf=paper/summary.pdf "file://$PWD/paper/summary.html" 2>/dev/null

@@ -5,3 +5,6 @@ pool*/
 *.npy
 __marimo__/
 SUBMISSION.md
+WRITEUP_MOMENT.md
+upload/
+.DS_Store
