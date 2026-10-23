@@ -53,6 +53,6 @@ Cut the second paragraph of slide 2 (the history), since slide 3 covers it. That
 | 32 | 0.138596 | 0.138432 |
 | 64 | 0.120901 | 0.120839 |
 | 128 | 0.107067 | 0.106909327 |
-| 256 | none published (Keich 0.106832) | 0.095956 |
-| 512 | none published (Keich 0.096732) | 0.087114 |
-| 1024 | none published (Keich 0.088343) | running |
+| 256 | none published (Keich 0.106832) | 0.095951 |
+| 512 | none published (Keich 0.096732) | 0.087041 |
+| 1024 | none published (Keich 0.088343) | 0.079662 |
